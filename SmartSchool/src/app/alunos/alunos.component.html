@@ -1,0 +1,47 @@
+<div *ngIf="alunoSelecionado">
+  <!-- <h1>{{titulo}}</h1><ul><li *ngFor="let aluno of alunos">{{aluno.nome}}</li></ul> -->
+  <div class="row">
+    <div class="mr-auto">
+      <app-titulo [titulo]="'Aluno:' + alunoSelecionado.id"></app-titulo>
+    </div>
+    <div class="mt-1">
+      <button class="btn btn-warning" (click)="Voltar()">Voltar</button>
+    </div>
+  </div>
+
+  <form>
+    <div class="mb-3">
+      <label for="fromGroupExam" class="form-label">Nome</label>
+      <input type="text" value="{{alunoSelecionado.nome}}" class="form-control">
+    </div>
+    <div class="mb-3">
+      <label for="fromGroupExam" class="form-label">Sobrenome</label>
+      <input type="text" value="{{alunoSelecionado.sobrenome}}" class="form-control">
+    </div>
+
+    <div class="mb-3">
+      <label for="fromGroupExam" class="form-label">Telefone</label>
+      <input type="text" value="{{alunoSelecionado.telefone}}" class="form-control">
+    </div>
+  </form>
+</div>
+<div *ngIf="!alunoSelecionado">
+  <table class="table table table-hover">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Nome</th>
+        <th scope="col">Sobrenome</th>
+        <th scope="col">Telefone</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let aluno of alunos" style="cursor: pointer;" (click)="AlunoSelect(aluno)">
+        <th scope="row">{{aluno.id}}</th>
+        <td>{{aluno.nome}}</td>
+        <td>{{aluno.sobrenome}}</td>
+        <td>{{aluno.telefone}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
